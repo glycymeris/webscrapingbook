@@ -2,4 +2,10 @@ import urllib2
 
 
 def download(url):
-    return urllib2.urlopen(url).read()
+    print 'Downloading:', url
+    try:
+        html = urllib2.urlopen(url).read()
+    except urllib2.urlEror as e:
+        print 'Download error:', e.reason
+        html = None
+    return html
