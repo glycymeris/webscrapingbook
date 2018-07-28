@@ -10,10 +10,10 @@ for page in itertools.count(1):
     url = 'http://example.webscraping.com/view/-%d' % page
     html = download(url)
     if html is None:
-        #received an error trying to download this webpage
+        # received an error trying to download this webpage
         num_errors += 1
         if num_errors == max_errors:
-            #reached maximum number of consecutive errors so exit
+            # reached maximum number of consecutive errors so exit
             break
     else:
         # success - can srape the result
