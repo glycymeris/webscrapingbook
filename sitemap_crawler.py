@@ -1,3 +1,4 @@
+import re
 import urllib2
 
 
@@ -17,4 +18,16 @@ def download(url, user_agent='wswp', num_retries=2):
     return html
 
 
-download('http://httpstat.us/500')
+def crawl_sitemap(url):
+    # download the sitemap file
+    sitemap = download(url)
+    # extract the sitemap links
+    links = re.findall('<loc>(.*?)</loc>', sitemap)
+    # download each link
+    for link in links:
+        html = download(link)
+        # scrape html here
+        # ...
+
+# download('http://httpstat.us/500')
+crawl_sitemap('http://example.webscraping.com/sitemap.xml')
